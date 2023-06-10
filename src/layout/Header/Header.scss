@@ -1,0 +1,22 @@
+#header{
+    .mainContain{
+        background-color: #c7d2e5;
+        display: flex;
+        justify-content: flex-end;
+        height: 4rem;
+    }
+
+    .options{
+        display: flex;
+        flex-direction: column;
+        margin-right: 1%;
+    }
+
+    .profileName{
+        padding: 3.5px;
+    }
+
+    .logout{
+        cursor: pointer;
+    }
+}

@@ -1,0 +1,44 @@
+#dashboard{
+    width: 100%;
+
+
+.buttonSet{
+    display: flex;
+    justify-content: space-between;
+}
+
+.uplaodButton{
+    width: 104px;
+    height: 40px;
+    margin: 0.5%;
+    font-size: medium;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+.downloadButton{
+    width: 104px;
+    height: 40px;
+    margin: 8% 0%;
+    font-size: medium;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+.head{
+        background-color: aliceblue;
+}
+table {
+    border: 2px solid #c7d2e5;
+    width: 100%;
+    height: max-content;
+}
+ 
+th {
+    border-bottom: 1px solid black;
+}
+ 
+td {
+    text-align: center;
+}
+}
