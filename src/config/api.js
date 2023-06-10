@@ -24,7 +24,7 @@ const AXIOSCALL = async (
 		const cookies = new Cookies();
 		const loginData = cookies.get('loginData');
 		const token = loginData?.token;
-		console.log('loginData', token);
+		//console.log('loginData', token);
 
 		const commonHeaders = {
 			'Access-Control-Allow-Origin': '*',
@@ -33,7 +33,7 @@ const AXIOSCALL = async (
 		if (token) {
 			commonHeaders.Authorization = `Bearer ${token}`;
 		}
-		console.log('commonHeaders------------->>', commonHeaders);
+		//console.log('commonHeaders------------->>', commonHeaders);
 
 		const response = await axios({
 			method,
@@ -42,7 +42,7 @@ const AXIOSCALL = async (
 			headers: { ...commonHeaders, ...headers },
 			data: body,
 		});
-		console.log('Response', response?.data?.data);
+		//console.log('Response', response?.data?.data);
 
 		return {
 			status: response.status,

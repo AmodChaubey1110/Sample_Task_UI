@@ -1,5 +1,6 @@
 export const ROUTE_PATH = {
 	LOGIN: '/',
+	SIGNUP: '/signUp',
 	DASHBOARD: '/home',
 };
 
@@ -14,6 +15,7 @@ export const BASEURL = {
 };
 
 export const URLENDPOINT = {
+	signUp: '/users',
 	login: '/users/login',
 	test: '/test',
 	getList: '/getTask',

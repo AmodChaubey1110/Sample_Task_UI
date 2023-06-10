@@ -1,0 +1,35 @@
+#signUp{
+    
+    .mainConatiner{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .loginSub{
+        margin-top: 10rem;
+        background: #aaa6a6;
+        width: 35rem;
+        height: max-content;
+    }
+
+    .inputField{
+        height: 3rem;
+    }
+
+    .alignInput{
+        display: flex;
+        flex-direction: column;
+        margin:15% 3%;
+    }
+
+    .submitButton{
+        cursor:pointer;
+    }
+
+    .centerText{
+        display: flex;
+        justify-content: center ;
+    }
+
+}

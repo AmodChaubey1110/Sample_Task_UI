@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import { CUSTOM_EVENT_TYPES } from '../constants';
+import { CUSTOM_EVENT_TYPES, ROUTE_PATH } from '../constants';
 import Header from './Header/index';
 import './Layout.scss';
 
@@ -22,7 +22,7 @@ const Layout = ({ children }) => {
 
 	return !disableLayout ? (
 		<div className={`Layout d-flex flex-column w-100 h-100`}>
-			{pathname == '/' ? (
+			{pathname == ROUTE_PATH.LOGIN || pathname == ROUTE_PATH.SIGNUP ? (
 				<></>
 			) : (
 				<div className="Layout__header">

@@ -8,17 +8,18 @@ const Dashboard = () => {
 	const [search, setSearch] = useState('');
 	const [tableData, setTableData] = useState([]);
 	const [file, setFile] = useState();
+	const [searchedVal, setSearchedVal] = useState('');
 
 	const handleSearch = (event) => {
 		setSearch(event.target.value);
-		console.log('search', search);
+		//console.log('search', search);
 		tableData.filter(() => {});
 	};
 
 	const selected = [];
 
 	const selectedValues = (e, val) => {
-		console.log(e.target.checked);
+		//console.log(e.target.checked);
 		if (e.target.checked) {
 			selected.push(val);
 		} else {
@@ -27,17 +28,17 @@ const Dashboard = () => {
 				selected.splice(index, 1);
 			}
 		}
-		console.log(selected);
+		//console.log(selected);
 	};
 
 	const list = () => {
 		const api = AXIOSCALL('GET', BASEURL.url + URLENDPOINT.getList)
 			.then((res) => {
 				setTableData(res?.data);
-				console.log('########', res?.data);
+				//console.log('########', res?.data);
 			})
 			.catch((err) => {
-				console.log('errrrr', err);
+				//console.log('errrrr', err);
 			});
 	};
 
@@ -64,7 +65,7 @@ const Dashboard = () => {
 		)
 			.then((res) => {})
 			.catch((err) => {
-				console.log('errrrr', err);
+				//console.log('errrrr', err);
 			});
 	}
 
@@ -96,8 +97,8 @@ const Dashboard = () => {
 				</div>
 			</div>
 			<label htmlFor="search">
-				Search by Task:
-				<input id="search" type="text" onChange={handleSearch} />
+				Search by Company Name:
+				<input onChange={(e) => setSearchedVal(e.target.value)} />
 			</label>
 			<table>
 				<tr className="head">
@@ -114,31 +115,39 @@ const Dashboard = () => {
 					<th>Work Loaction</th>
 					<th>DOJ</th>
 				</tr>
-				{tableData.map((val, key) => {
-					return (
-						<>
-							<tr key={key}>
-								<input
-									type="checkbox"
-									onChange={(e) => {
-										selectedValues(e, val);
-									}}
-								/>
-								<td>{val.Plan_Type}</td>
-								<td>{val.Company_Name}</td>
-								<td>{val.Emp_Mobile_No}</td>
-								<td>{val.Emp_Code}</td>
-								<td>{val.Work_Email}</td>
-								<td>{val.Grade_Card}</td>
-								<td>{val.Emp_Type}</td>
-								<td>{val.Emp_Name}</td>
-								<td>{val.Designation}</td>
-								<td>{val.Work_Loaction}</td>
-								<td>{val.DOJ}</td>
-							</tr>
-						</>
-					);
-				})}
+				{tableData
+					.filter(
+						(row) =>
+							!searchedVal.length ||
+							row.Company_Name.toString()
+								.toLowerCase()
+								.includes(searchedVal.toString().toLowerCase())
+					)
+					.map((val, key) => {
+						return (
+							<>
+								<tr key={key}>
+									<input
+										type="checkbox"
+										onChange={(e) => {
+											selectedValues(e, val);
+										}}
+									/>
+									<td>{val.Plan_Type}</td>
+									<td>{val.Company_Name}</td>
+									<td>{val.Emp_Mobile_No}</td>
+									<td>{val.Emp_Code}</td>
+									<td>{val.Work_Email}</td>
+									<td>{val.Grade_Card}</td>
+									<td>{val.Emp_Type}</td>
+									<td>{val.Emp_Name}</td>
+									<td>{val.Designation}</td>
+									<td>{val.Work_Loaction}</td>
+									<td>{val.DOJ}</td>
+								</tr>
+							</>
+						);
+					})}
 			</table>
 		</div>
 	);
